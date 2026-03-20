@@ -25,7 +25,7 @@ cd /workspace
 
 # gitプロジェクトの初期化
 # 事前に新しいプロジェクト用のgitリポジトリを作成しておく
-mv -n /home/ishiz/workspace/ml_template /home/ishiz/workspace/atma_udemy_agent
+mv -n 旧ディレクトリ名 新ディレクトリ名
 cd /workspace/atma_udemy_agent # 要修正
 rm -rf .git
 git init
@@ -42,6 +42,9 @@ uv python install 3.12.12 # 要修正
 
 # ipynbの出力をコミット時に自動削除する
 uv run nbstripout --install
+
+# 仮想環境をactive
+source .venv/bin/activate
 
 
 
