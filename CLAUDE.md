@@ -27,6 +27,7 @@ This file provides guidance to Claude Code (claude.ai/code) when working with co
 │   └── submission/               # 提出用CSVの生成先
 ├── docs/
 │   ├── overview.md               # コンペ概要
+│   ├── data_discription.md       # データセットの詳細説明
 │   └── idea_researches/          # アイデア調査結果の蓄積
 ├── exps/                         # 実験管理ディレクトリ
 │   ├── EXP_SUMMARY.md            # 実験履歴（AIの記憶）
@@ -34,17 +35,21 @@ This file provides guidance to Claude Code (claude.ai/code) when working with co
 │       └── exp01_01/             # child-exp（パラメータ・loss等の差分）
 │           ├── config/           # 実験設定ファイル
 │           ├── notebooks/        # 実験用ノートブック
-│           ├── src/              # 実験固有のロジック
+│           ├── src/              # 実験用ロジック
 │           └── output/           # 実験結果の出力先
 ├── logs/                         # 実行ログ（日時付きファイル推奨）
 ├── models/                       # モデル/チェックポイント（必要時のみ）
-├── notebooks/                    # 共通の実験/実行用 Notebook
+├── notebooks/                    # 本番用Notebook
 ├── sample_code/                  # 参考サンプル（他人のコードなど）
-├── src/                          # 共通ロジックを記載したPythonモジュール群
+├── src/                          # 本番用モジュール
 ├── tmp/                          # 検証などで利用するファイルやコード群
-├── CLAUDE.md                     # このリポジトリの開発/運用ガイド
-└── data_discription.md           # データセットの詳細説明
+└── CLAUDE.md                     # このリポジトリの開発/運用ガイド
+
 ```
+
+# アーキテクチャ
+
+詳細なアーキテクチャ（EDA・Model-Runner-Notebookパターン・特徴量システム・学習パイプライン）が必要な場合は `.claude/skills/engineer/SKILL.md` を参照。
 
 # コード規約
 
@@ -66,16 +71,11 @@ This file provides guidance to Claude Code (claude.ai/code) when working with co
 # 環境・実行方法
 
 - パッケージ管理・スクリプト実行は `uv` を使用する（例: `uv run python script.py`）
-- 依存パッケージは `requirements.txt` で管理する
 
 # 禁止事項
 
 - `data/raw/` 配下のファイルは直接編集しない（読み取り専用）
 - `sample_code/` 配下のファイルは編集しない（参照専用）
-
-# アーキテクチャ詳細
-
-詳細なアーキテクチャ（EDA・Model-Runner-Notebookパターン・特徴量システム・学習パイプライン）は `.claude/skills/engineer/SKILL.md` を参照してください。
 
 
 
