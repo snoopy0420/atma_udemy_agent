@@ -19,7 +19,6 @@ allowed-tools: Bash(gh *), Read, Grep, Glob
 
 - ARGUMENTS で受け取ったタスクを確認する
 - idea-XXXなどのアイデア番号を指定した場合は　`docs/idea_researches` 以下の対象のアイデアを参照する
-- `exps/EXP_SUMMARY.md` が存在する場合は読み込み、過去の失敗・成功履歴を確認して重複提案を避ける
 - 関連ファイルを読み込み、既存のコードや構造を理解する
 - TaskCreate で実装ステップを細かく分解して登録する
 - 実装前にユーザーに計画を提示し、方針を確認する（大きな変更の場合）
@@ -40,8 +39,8 @@ allowed-tools: Bash(gh *), Read, Grep, Glob
 
 実装完了後、`exps/EXP_SUMMARY.md` の `# 実験ログ` セクションに以下のフォーマットで追記する。
 
-**AIが記入する項目**: 実験名・変更概要
-**人間が追記する項目**: CV・LB・Gap・成功/失敗・所感（`TODO` でプレースホルダーを残す）
+- **AIが記入する項目**: 実験名・変更概要
+- **人間が追記する項目**: CV・LB・Gap・成功/失敗・所感（`TODO` でプレースホルダーを残す）
 
 ```markdown
 ## expXX: （expのタイトル）
@@ -102,8 +101,26 @@ exps/
 ### 全体設計
 
 本プロジェクトは **EDA → 前処理 → 特徴量生成 → 学習パイプライン** の流れで構成される。
-各フェーズはノートブック（`notebooks/`・`exps/`）とモジュール（`src/`）で分離して管理する。
-ロジックはsrc/配下にモジュールとして記述し実行・検証・可視化はnotebooks/配下でノートブックを作成し実行する。
+
+**すべてのスクリプト（ノートブック・src・configs）は `exps/expXX/expXX_XX/` 配下に格納する。** プロジェクトルートの `src/`・`notebooks/`・`configs/` には実装しない。
+
+各 child-exp は以下の自己完結した構造を持つ（※data,models,logsは共有する）：
+
+```
+├── exps/                         
+│   ├── EXP_SUMMARY.md            # 実験履歴（AIの記憶）
+│   └── exp01/                    
+│       └── exp01_01/             
+│           ├── configs/          # 実験設定ファイル　（config.py）
+│           ├── notebooks/        # 実験用ノートブック（preprocess.ipynb / create_features.ipynb / exp_lgbm.ipynb等）
+│           ├── src/              # 実験用ロジック（runner.py / model.py / feature.py / util.py 等）
+│           └── output/           # 実験結果の出力先
+├── logs/                         # 実行ログ（日時付きファイル推奨）
+├── models/                       # モデル/チェックポイント（必要時のみ）
+├── data/                         # データ群
+```
+
+ノートブックは `notebooks/` 直下で実行するため、`sys.path.append(os.path.abspath('..'))` で `expXX_XX/` をパスに追加すれば `from configs.config import *` および `from src.X import Y` が解決される。
 
 ```
 [raw data]
@@ -123,7 +140,7 @@ exps/
 
 ### 特徴量システム（FeatureBase パターン）
 
-`src/feature.py` の `FeatureBase` を継承して特徴量クラスを作る。
+`exps/expXX/expXX_XX/src/feature.py` の `FeatureBase` を継承して特徴量クラスを作る。
 
 ```python
 class MyFeature(FeatureBase):
@@ -146,7 +163,7 @@ class MyFeature(FeatureBase):
 
 ### Modelクラス（抽象基底クラス）
 
-`src/model.py` の `Model` を継承してモデルクラスを実装する。
+`exps/expXX/expXX_XX/src/model.py` の `Model` を継承してモデルクラスを実装する。
 
 | 抽象メソッド | 役割 |
 |---|---|
@@ -158,7 +175,7 @@ class MyFeature(FeatureBase):
 
 ### Runnerクラス（学習パイプライン）
 
-`src/runner.py` の `Runner` がCVループ全体を管理する。
+`exps/expXX/expXX_XX/src/runner.py` の `Runner` がCVループ全体を管理する。
 
 **主要メソッド**:
 
@@ -173,13 +190,11 @@ class MyFeature(FeatureBase):
 
 ### Util・Logger・Metric
 
-`src/util.py` に共通ユーティリティをまとめている。
+`exps/expXX/expXX_XX/src/util.py` に共通ユーティリティをまとめている。
 
 ---
 
 ### ノートブックパターン
-
-`sample/notebooks/` にある構成を参考にする:
 
 | ノートブック | 内容 |
 |---|---|
@@ -187,11 +202,19 @@ class MyFeature(FeatureBase):
 | `create_features.ipynb` | FeatureBaseサブクラスを呼び出し → `data/features/` へ保存 |
 | `exp_XXXX.ipynb`(例：exp_lgbm.ipynb) | 特徴量マージ → Runner実行 → 評価・可視化 → submission生成 |
 
+各ノートブック冒頭の `sys.path` 設定：
+
+```python
+sys.path.append(os.path.abspath('..'))  # expXX_XX/ をパスに追加
+from configs.config import *            # expXX_XX/configs/config.py
+from src.runner import Runner           # expXX_XX/src/runner.py
+```
+
 ---
 
 ### 設定値管理（config.py）
 
-`configs/config.py` でパス定数を一元管理。各ノートブック・スクリプトは `from configs.config import *` で読み込む。
+`exps/expXX/expXX_XX/configs/config.py` でパス定数を一元管理。各ノートブック・スクリプトは `from configs.config import *` で読み込む。
 
 ---
 

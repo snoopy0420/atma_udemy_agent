@@ -16,8 +16,6 @@ This file provides guidance to Claude Code (claude.ai/code) when working with co
 .
 ├── README.md                     # リポジトリ全体の簡易概要
 ├── requirements.txt              # 依存パッケージ
-├── configs/
-│   └── config.py                 # 設定値（定数/パス）を集中管理
 ├── data/
 │   ├── raw/                      # 生データ（配布物・外部取得データ）
 │   │   └── input/                # コンペ配布の入力ファイル類

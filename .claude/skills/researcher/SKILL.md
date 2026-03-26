@@ -52,6 +52,7 @@ allowed-tools: Read, Grep, Glob, WebSearch, WebFetch, Write, Edit, Bash
 - 情報はファクトベースで。推測は明記すること
 - ソースURLを必ず含める
 - 調査結果は `docs/idea_researches/details/` 以下の適切なファイルに保存する
+- `exps/EXP_SUMMARY.md`に過去の実験結果を記載しているので、同じideaはリストアップしない
 
 
 ARGUMENTS: {{{ARGUMENTS}}}
