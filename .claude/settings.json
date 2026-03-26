@@ -1,0 +1,23 @@
+{
+  "$schema": "https://json.schemastore.org/claude-code-settings.json",
+  "permissions": {
+    "allow": [
+      "Read",
+      "Grep",
+      "Glob",
+      "Bash(uv run *)",
+      "Edit(exps/*)",
+    ],
+    "deny": [
+      "Edit(.env*)",
+      "Edit(*.pem)",
+      "Edit(*.key)",
+      "Write(.env*)",
+      "Write(*.pem)",
+      "Write(*.key)",
+      "Read(./.env)",
+      "Read(./.env.*)",
+      "Read(./secrets/**)"
+    ]
+  }
+}
