@@ -25,7 +25,6 @@ FILE_NAME_POSITION_HISTORY = 'position_history.csv'
 
 # CONFIG
 TARGET_COL = 'target'
-REMOVE_COLS = []
 KEY_COL = ['社員番号', 'category']
 
 

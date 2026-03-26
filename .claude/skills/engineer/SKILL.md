@@ -18,6 +18,7 @@ allowed-tools: Bash(gh *), Read, Grep, Glob
 ### 1. タスクの把握と計画
 
 - ARGUMENTS で受け取ったタスクを確認する
+- idea-XXXなどのアイデア番号を指定した場合は　`docs/idea_researches` 以下の対象のアイデアを参照する
 - `exps/EXP_SUMMARY.md` が存在する場合は読み込み、過去の失敗・成功履歴を確認して重複提案を避ける
 - 関連ファイルを読み込み、既存のコードや構造を理解する
 - TaskCreate で実装ステップを細かく分解して登録する
