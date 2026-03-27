@@ -22,19 +22,29 @@
 
 | ID | アイデア | 詳細資料 | 主体 |
 |----|----------|----------|----------|
-| idea-101 | - | - | - |
+| idea-101 | 残業データの時系列特徴量（trend_slope, 直近N月平均, 変動係数, 最終値等） | advanced_feature_engineering_research.md | AI |
+| idea-102 | Udemyアクティビティの詳細特徴量（active_days, binge_ratio, quiz_ratio, duration, recent3m等） | advanced_feature_engineering_research.md | AI |
+| idea-103 | ターゲットエンコーディング（役職ラベル・コースカテゴリ・DX/HR施策カテゴリ） | advanced_feature_engineering_research.md | AI |
+| idea-104 | テーブル間クロス特徴量（比率・積: udemy_count/overtime_month等） | advanced_feature_engineering_research.md | AI |
+| idea-105 | 職位履歴の詳細特徴量（昇進からの経過年数, 役職ランク変化量, 1役職あたり在籍年数） | advanced_feature_engineering_research.md | AI |
 
 ## モデル・学習設定
 
 | ID | アイデア | 詳細資料 | 主体 |
 |----|----------|----------|----------|
-| idea-201 | - | - | - |
+| idea-201 | CatBoostを追加してLightGBMとアンサンブル（カテゴリ変数をそのまま投入） | advanced_feature_engineering_research.md | AI |
+| idea-202 | Optuna によるLightGBMハイパーパラメータ最適化 | advanced_feature_engineering_research.md | AI |
+| idea-203 | AutoGluon で上限スコアを確認（best_quality preset, roc_auc） | advanced_feature_engineering_research.md | AI |
+| idea-204 | TabPFN v2でアンサンブル多様性を追加（小規模データ向け基盤モデル） | advanced_feature_engineering_research.md | AI |
+| idea-205 | FT-Transformer / SAINTによるdeep learning（アンサンブル要素として） | advanced_feature_engineering_research.md | AI |
 
 ## アンサンブル・後処理
 
 | ID | アイデア | 詳細資料 | 主体 |
 |----|----------|----------|----------|
-| idea-301 | - | - | - |
+| idea-301 | 擬似ラベリング（testの高確信サンプルをtrainに追加して再学習） | advanced_feature_engineering_research.md | AI |
+| idea-302 | XGBoost + LightGBM + CatBoost のOOFスタッキング | advanced_feature_engineering_research.md | AI |
+| idea-303 | ヒルクライミングアンサンブル（加重平均の重みを最適化） | advanced_feature_engineering_research.md | AI |
 
 ## バリデーション戦略
 

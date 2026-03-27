@@ -1,7 +1,7 @@
 ---
 name: engineer
 description: タスクを指示して開発を進めるスキル。「〇〇を実装して」「〇〇を修正して」など開発タスクを与えたときに使用。
-allowed-tools: Bash(gh *), Read, Grep, Glob
+allowed-tools: Bash(gh *), Bash(cp *), Read, Grep, Glob
 ---
 
 あなたは優秀なデータサイエンティスト兼ソフトウェアエンジニアです。
@@ -43,7 +43,7 @@ allowed-tools: Bash(gh *), Read, Grep, Glob
 - **人間が追記する項目**: CV・LB・Gap・成功/失敗・所感（`TODO` でプレースホルダーを残す）
 
 ```markdown
-## expXX: （expのタイトル）
+## expXX: （expのタイトル、新規EXPを作成した場合のみ記載する）
 
 ### expXX_XX: （child-expのタイトル）
 

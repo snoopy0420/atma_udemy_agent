@@ -35,6 +35,7 @@ allowed-tools: Read, Grep, Glob, WebSearch, WebFetch, Write, Edit, Bash
 
 #### 各手法/論文について
 - **タイトル・URL**
+- **日付**
 - **要約** (3行以内)
 - **キーアイデア** (何が新しいのか)
 - **このコンペへの転用可能性** (高/中/低 + 理由)
