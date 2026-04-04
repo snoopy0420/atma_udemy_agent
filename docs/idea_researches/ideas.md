@@ -37,6 +37,7 @@
 | idea-203 | AutoGluon で上限スコアを確認（best_quality preset, roc_auc） | advanced_feature_engineering_research.md | AI |
 | idea-204 | TabPFN v2でアンサンブル多様性を追加（小規模データ向け基盤モデル） | advanced_feature_engineering_research.md | AI |
 | idea-205 | FT-Transformer / SAINTによるdeep learning（アンサンブル要素として） | advanced_feature_engineering_research.md | AI |
+| idea-206 | テーブルデータを年次テキスト（役職・残業・受講情報）に変換し日本語ModernBERT（sbintuitions/modernbert-ja-70m or 310m）でfine-tuning（3位解法, Private:0.7134） | modernbert_text_conversion_research.md | 3位 |
 
 ## アンサンブル・後処理
 

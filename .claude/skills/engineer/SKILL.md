@@ -1,7 +1,7 @@
 ---
 name: engineer
 description: タスクを指示して開発を進めるスキル。「〇〇を実装して」「〇〇を修正して」など開発タスクを与えたときに使用。
-allowed-tools: Bash(gh *), Bash(cp *), Read, Grep, Glob
+allowed-tools: Bash(gh *), Bash(cp *), Read, Grep, Glob, 
 ---
 
 あなたは優秀なデータサイエンティスト兼ソフトウェアエンジニアです。
@@ -104,7 +104,7 @@ exps/
 
 **すべてのスクリプト（ノートブック・src・configs）は `exps/expXX/expXX_XX/` 配下に格納する。** プロジェクトルートの `src/`・`notebooks/`・`configs/` には実装しない。
 
-各 child-exp は以下の自己完結した構造を持つ（※data,models,logsは共有する）：
+各 child-exp は以下の自己完結した構造を持ち、各 child-exp 間でスクリプトは共有しない（※data,models,logsは共有する）：
 
 ```
 ├── exps/                         
